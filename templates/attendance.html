@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Attendance</title>
+    <style>
+      #camera-preview {
+        width: 100%; /* Adjust the width as desired */
+        max-width: 600px; /* Limit the width for better layout */
+        height: auto; /* Auto adjust height */
+        margin: 15px auto; /* Center the camera preview */
+        border: 2px solid #ccc; /* Increase border thickness */
+        border-radius: 8px; /* Add border radius for a rounded look */
+        position: relative;
+        overflow: hidden; /* Hide overflowing content */
+      }
+      #video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Fit the video to the container */
+      }
+      .go-back-btn {
+        display: block;
+        margin: 20px auto; /* Center the button horizontally and add margin */
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50 dark:bg-gray-900">
+    <div id="camera-preview">
+      <img src="{{ url_for('video_feed') }}" alt="Video Feed" />
+    </div>
+
+    <button
+      type="button"
+      onclick="goBack()"
+      class="w-40 flex-shrink-0 bg-blue-500 hover:bg-blue-700 border-blue-500 hover:border-blue-700 text-sm border-4 text-white py-1 px-2 rounded go-back-btn"
+    >
+      Go back
+    </button>
+    <div>
+      <a
+        href="/download/attendance"
+        class="w-40 flex-shrink-0 bg-blue-500 hover:bg-blue-700 border-blue-500 hover:border-blue-700 text-sm border-4 text-white py-1 px-2 rounded go-back-btn"
+        >Download</a
+      >
+    </div>
+    <script>
+      function goBack() {
+        window.location.href = "/dashboard";
+      }
+
+      // function downloadAttendance() {
+      //   // Send a POST request to mark attendance
+      //   fetch("/mark_attendance", {
+      //     method: "POST",
+      //     headers: {
+      //       "Content-Type": "application/json",
+      //     },
+      //     body: JSON.stringify({ student_id: "student_id" }), // Replace with actual student ID
+      //   })
+      //     .then((response) => {
+      //       if (!response.ok) {
+      //         throw new Error("Network response was not ok");
+      //       }
+      //       // Return the response as blob
+      //       return response.blob();
+      //     })
+      //     .then((blob) => {
+      //       // Create a blob URL from the blob object
+      //       const blobUrl = window.URL.createObjectURL(blob);
+      //       // Create a hidden anchor element to trigger the download
+      //       const link = document.createElement("a");
+      //       link.href = blobUrl;
+      //       link.download = "../attendance.csv";
+      //       // Append the link to the body
+      //       document.body.appendChild(link);
+      //       // Trigger the click event to start the download
+      //       link.click();
+      //       // Cleanup
+      //       window.URL.revokeObjectURL(blobUrl);
+      //       // Remove the anchor element
+      //       link.remove();
+      //     })
+      //     .catch((error) => {
+      //       console.error("Error downloading attendance:", error);
+      //     });
+      // }
+    </script>
+  </body>
+</html>

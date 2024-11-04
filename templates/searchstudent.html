@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <title>Search Student</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      var refreshedOnce = false; // Variable to track whether the page has been refreshed once
+
+      // JavaScript function to check if the search input field is empty before submitting the form
+      function validateForm() {
+        var searchQuery = document.getElementById("search_query").value.trim();
+        if (searchQuery === "") {
+          alert("Please enter a search query.");
+          return false; // Prevent form submission
+        }
+        return true; // Allow form submission
+      }
+
+      // Function to redirect to the previous page
+      function goBack() {
+        window.location.href = "/dashboard";
+      }
+
+      // Function to redirect to the search page without query parameters when the page is refreshed
+      function redirectToSearchPage() {
+        if (!refreshedOnce && window.location.pathname !== "/search_student") {
+          // Check if the page has been refreshed once and if it's not already on the search page
+          refreshedOnce = true; // Set the variable to true after the first refresh
+          window.location.href = "/search_student";
+        }
+      }
+
+      // Execute the redirection function when the page is ready
+      $(document).ready(function () {
+        redirectToSearchPage();
+      });
+    </script>
+  </head>
+  <body class="bg-gray-50 dark:bg-gray-900">
+    <div class="container mx-auto py-12">
+      <h1
+        class="text-3xl font-semibold mb-6 text-center search-heading text-white"
+      >
+        Search Student
+      </h1>
+      <form
+        action="/search_student"
+        method="POST"
+        class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-md"
+        onsubmit="return validateForm();"
+      >
+        <div
+          class="flex items-center justify-center border-b border-b-2 border-blue-500 py-2"
+        >
+          <input
+            type="search"
+            name="search_query"
+            id="search_query"
+            class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
+            placeholder="Search Student"
+          />
+          <button
+            type="submit"
+            class="flex-shrink-0 bg-blue-500 hover:bg-blue-700 border-blue-500 hover:border-blue-700 text-sm border-4 text-white py-1 px-2 rounded"
+          >
+            Search
+          </button>
+        </div>
+      </form>
+
+      <!-- "Go Back" button -->
+      <div class="text-center mt-4">
+        <button
+          onclick="goBack()"
+          class="bg-blue-500 hover:none text-white font-bold py-2 px-4 rounded"
+        >
+          Go Back
+        </button>
+      </div>
+
+      <!-- Display search results if available -->
+      <div id="searchResults" class="container mx-auto py-12">
+        <div
+          id="resultsContainer"
+          class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6"
+        >
+          {% if results %} {% for result in results %}
+          <div class="bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-lg font-semibold mb-2">
+              {{ result.fname }} {{ result.lname }}
+            </h2>
+            <p><strong>Gender:</strong> {{ result.gender }}</p>
+            <p><strong>Date of Birth:</strong> {{ result.dob }}</p>
+            <p><strong>Email:</strong> {{ result.email }}</p>
+            <p><strong>Phone Number:</strong> {{ result.phone_number }}</p>
+            <p><strong>Registration Number:</strong> {{ result.register }}</p>
+            <p><strong>Address:</strong> {{ result.address }}</p>
+            <p><strong>State:</strong> {{ result.state }}</p>
+            <p><strong>Pincode:</strong> {{ result.pincode }}</p>
+            <p><strong>Declaration:</strong> {{ result.declaration }}</p>
+          </div>
+          {% endfor %} {% endif %}
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

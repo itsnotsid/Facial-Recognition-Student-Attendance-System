@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Student Details</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Custom CSS for input fields */
+      input[type="text"],
+      input[type="email"],
+      input[type="tel"],
+      textarea,
+      select {
+        color: black; /* Set text color to black */
+      }
+    </style>
+  </head>
+  <body class="font-inter bg-gray-900 text-gray-100">
+    <div class="container mx-auto px-4 py-8">
+      <div class="max-w-4xl mx-auto">
+        <h1 class="text-3xl font-semibold text-center mb-8">
+          Edit Student Details
+        </h1>
+        <form id="edit-student-form" class="space-y-4">
+          <div
+            class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4"
+          >
+            <div class="w-full">
+              <label for="fname" class="block text-sm font-medium"
+                >First Name</label
+              >
+              <input
+                type="text"
+                id="fname"
+                name="fname"
+                class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300"
+                required
+              />
+            </div>
+            <div class="w-full">
+              <label for="lname" class="block text-sm font-medium"
+                >Last Name</label
+              >
+              <input
+                type="text"
+                id="lname"
+                name="lname"
+                class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300"
+                required
+              />
+            </div>
+          </div>
+          <div class="w-full">
+            <label for="email" class="block text-sm font-medium"
+              >Email Address</label
+            >
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300"
+              required
+            />
+          </div>
+          <div class="w-full">
+            <label for="phone_number" class="block text-sm font-medium"
+              >Phone Number</label
+            >
+            <input
+              type="tel"
+              id="phone_number"
+              name="phone_number"
+              class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300"
+              required
+            />
+          </div>
+          <div class="w-full">
+            <label for="address" class="block text-sm font-medium"
+              >Address</label
+            >
+            <textarea
+              id="address"
+              name="address"
+              rows="3"
+              class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300"
+              required
+            ></textarea>
+          </div>
+          <div class="w-full">
+            <label for="state" class="block text-sm font-medium">State</label>
+            <select
+              id="state"
+              name="state"
+              class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300"
+              required
+            >
+              <option value="">-- Select your state --</option>
+              <option value="Andaman and Nicobar Islands">
+                Andaman and Nicobar Islands
+              </option>
+              <option value="Andhra Pradesh">Andhra Pradesh</option>
+              <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+              <option value="Assam">Assam</option>
+              <option value="Bihar">Bihar</option>
+              <option value="Chandigarh">Chandigarh</option>
+              <option value="Chhattisgarh">Chhattisgarh</option>
+              <option value="Dadra and Nagar Haveli and Daman and Diu">
+                Dadra and Nagar Haveli and Daman and Diu
+              </option>
+              <option value="Delhi">Delhi</option>
+              <option value="Goa">Goa</option>
+              <option value="Gujarat">Gujarat</option>
+              <option value="Haryana">Haryana</option>
+              <option value="Himachal Pradesh">Himachal Pradesh</option>
+              <option value="Jharkhand">Jharkhand</option>
+              <option value="Karnataka">Karnataka</option>
+              <option value="Kerala">Kerala</option>
+              <option value="Lakshadweep">Lakshadweep</option>
+              <option value="Madhya Pradesh">Madhya Pradesh</option>
+              <option value="Maharashtra">Maharashtra</option>
+              <option value="Manipur">Manipur</option>
+              <option value="Meghalaya">Meghalaya</option>
+              <option value="Mizoram">Mizoram</option>
+              <option value="Nagaland">Nagaland</option>
+              <option value="Odisha">Odisha</option>
+              <option value="Puducherry">Puducherry</option>
+              <option value="Punjab">Punjab</option>
+              <option value="Rajasthan">Rajasthan</option>
+              <option value="Sikkim">Sikkim</option>
+              <option value="Tamil Nadu">Tamil Nadu</option>
+              <option value="Telangana">Telangana</option>
+              <option value="Tripura">Tripura</option>
+              <option value="Uttar Pradesh">Uttar Pradesh</option>
+              <option value="Uttarakhand">Uttarakhand</option>
+              <option value="West Bengal">West Bengal</option>
+            </select>
+          </div>
+          <div class="w-full">
+            <label for="pincode" class="block text-sm font-medium"
+              >Pin Code</label
+            >
+            <input
+              type="text"
+              id="pincode"
+              name="pincode"
+              class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300"
+              required
+            />
+          </div>
+          <div class="flex justify-center space-x-4">
+            <!-- Added space-x-4 for horizontal spacing -->
+            <button
+              type="submit"
+              class="inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            >
+              Save Changes
+            </button>
+            <a href="/studentdetails">
+              <!-- Changed button to anchor tag -->
+              <button
+                class="inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              >
+                Go Back
+              </button>
+            </a>
+          </div>
+        </form>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      var getUrlParameter = function getUrlParameter(sParam) {
+        var sPageURL = window.location.search.substring(1),
+          sURLVariables = sPageURL.split("&"),
+          sParameterName,
+          i;
+
+        for (i = 0; i < sURLVariables.length; i++) {
+          sParameterName = sURLVariables[i].split("=");
+
+          if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined
+              ? true
+              : decodeURIComponent(sParameterName[1]);
+          }
+        }
+        return false;
+      };
+      $(document).ready(function () {
+        // Fetch student details and populate form fields
+
+        // Submit form data
+        $("#edit-student-form").submit(function (event) {
+          event.preventDefault(); // Prevent the default form submission behavior
+          var formdata = $(this).serializeArray();
+          var data = { id: getUrlParameter("id") };
+          $(formdata).each(function (index, obj) {
+            data[obj.name] = obj.value;
+          });
+          // AJAX request to update student details
+          $.ajax({
+            url: "/update_student", // Replace with your endpoint to update student details
+            method: "POST",
+            data: data,
+            success: function (response) {
+              // Handle success response
+              console.log("Student details updated successfully");
+              // Redirect to /studentdetails
+              window.location.href = "/studentdetails";
+              // Optionally, you can show a success message here
+              alert("Student details updated successfully");
+            },
+            error: function (xhr, status, error) {
+              // Handle error response
+              console.error("Failed to update student details:", error);
+              // Optionally, you can show an error message here
+              alert("Failed to update student details. Please try again.");
+            },
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

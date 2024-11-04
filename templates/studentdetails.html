@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Student Details</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+  <body class="bg-gray-50 dark:bg-gray-900">
+    <div class="container mx-auto px-4 py-8">
+      <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+        <table
+          class="max-w-full w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
+          id="student-table-body"
+        >
+          <thead
+            class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+          >
+            <tr>
+              <th scope="col" class="px-6 py-3">Student name</th>
+              <th scope="col" class="px-6 py-3">Registration Number</th>
+              <th scope="col" class="px-6 py-3"></th>
+              <th scope="col" class="px-6 py-3"></th>
+              <th scope="col" class="px-6 py-3">
+                <span class="sr-only">Edit</span>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Table rows will be appended here dynamically -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="container mx-auto px-4 py-8 text-center">
+      <button
+        onclick="window.location.href='/dashboard'"
+        class="text-lg font-semibold bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+      >
+        Go to Dashboard
+      </button>
+    </div>
+
+    <script>
+      $(document).ready(function () {
+        $.ajax({
+          url: "/liststudents",
+          method: "GET",
+          success: function (data) {
+            data.forEach(function (student) {
+              // Update the href attribute to include the student ID
+              $("#student-table-body").append(`
+                <tr>
+                  <td class="px-6 py-4">${student.fname}</td>
+                  <td class="px-6 py-4">${student.register}</td>
+                  <td class="px-6 py-4"></td>
+                  <td class="px-6 py-4"></td>
+                  <td class="px-6 py-4">
+                    <!-- Update the href attribute to include the student ID -->
+                    <a href="/edit?id=${student._id}" class="text-white-600 hover:text-indigo-900">Edit</a>
+                  </td>
+                </tr>
+              `);
+            });
+          },
+          error: function (xhr, status, error) {
+            console.error(error);
+          },
+        });
+      });
+    </script>
+  </body>
+</html>
