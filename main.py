@@ -81,9 +81,9 @@ def dashboard():
     return render_template('dashboard.html')
 
 
-@app.route('/login')
+@app.route('/index')
 def login():
-    return render_template('login.html')
+    return render_template('index.html')
 
 
 @app.route('/submit', methods=['POST'])
